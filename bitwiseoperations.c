@@ -20,6 +20,7 @@ Input: 11 output:   15  11   10
 #include<stdio.h>
 int main()
 {
+    printf("Enter an integer value:");
     unsigned char reg_8;
     scanf("%d",&reg_8);
     unsigned char setbit_3 = reg_8 |(1<<2);

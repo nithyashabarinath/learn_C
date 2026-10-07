@@ -22,11 +22,11 @@ int main()
 {
     printf("Enter an integer value:");
     unsigned char reg_8;
-    scanf("%d",&reg_8);
+    scanf("%hhu",&reg_8);
     unsigned char setbit_3 = reg_8 |(1<<2);
     unsigned char clearbit_6=reg_8 &~(1<<5);
     unsigned char togglebit_1 = reg_8 ^(1);
-    printf("\nthe 3rd bit is set and modified value is %d",setbit_3);
-    printf("\nthe 6th bit is cleared and modified value is %d",clearbit_6);
-    printf("\nthe 1st bit is toggled and modified value is %d",togglebit_1);
+    printf("\nthe 3rd bit is set and modified value is %hhu",setbit_3);
+    printf("\nthe 6th bit is cleared and modified value is %hhu",clearbit_6);
+    printf("\nthe 1st bit is toggled and modified value is %hhu",togglebit_1);
 }

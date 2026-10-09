@@ -12,19 +12,14 @@ TEST CASES:
    3. Input: 12, Output: "12 is not a perfect number."
 */
 #include<stdio.h>
+int perfect(int num);
 int main()
 {
-    int n, sum = 0, divisor;
+    int n,summ;
     printf("Enter a positive integer: ");
     scanf("%d", &n);
-    for (divisor = 1; divisor <=(n/2); divisor++)
-    {
-        if (n % divisor == 0)
-        {
-            sum += divisor;
-        }
-    }
-    if (sum == n)
+    summ = perfect(n);
+    if (summ == n)
     {
         printf("%d is a perfect number.", n);
     }
@@ -34,3 +29,16 @@ int main()
     }
     return 0;
 }
+int perfect(int num)
+ {
+    int sum = 0;
+    for (int divisor= 1; divisor <= num / 2; divisor++)
+     {
+     if (num % divisor == 0)
+     {
+        sum += divisor;
+     }
+    }
+     return sum;
+     
+ }

@@ -43,15 +43,7 @@ int main(void)
         }
         seen[idx] = 1;                       
     }
-   /* printf("\nMissing letters: ");
-    for (i = 0; i < ALPHABET; i++) 
-    {
-        if (seen[i] == 0) 
-        {
-            printf("%c ", 'a' + i);    
-            missing++;
-        }
-    }*/
+   
     printf("\n");
     if (missing == 0)
     {

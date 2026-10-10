@@ -1,4 +1,5 @@
-/*REQUIREMENT:
+/*REQUIREMENT:C program that uses a recursive function to find the GCD of two
+numbers using the Euclidean algorithm.
 DESIGN:
 List of Variables: num1, num2, res
   1. Get two positive integers from the user

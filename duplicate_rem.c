@@ -1,4 +1,4 @@
-/*REQUIREMENT:
+/*REQUIREMENT:Write a C program to remove duplicate elements from a given array.(ARRAY)
 DESIGN:
 List of Variables: 
 arr, size (size of array), i, j, k (loop variables)

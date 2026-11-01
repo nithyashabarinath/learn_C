@@ -6,15 +6,8 @@
  List of functions:
        add(), subtract(), multiply(), divide()  - one small function per operation
        calculate()  - the SELECTOR: looks at the operator and calls the right one
- 
- 
-
- *
- *   How do we report a problem when the function must also return a number?
- *   We pass in the ADDRESS of a flag variable (int *ok). The function writes
- *   1 (all fine) or 0 (problem) into it, and main() reads it afterwards.
- *   This is the same "pass by reference" idea used with arrays in Q7.
- 
+ TEST CASES:
+ 1.  a = 5.0, b = 2.0, op = '+', result = 7.0
  */
 
 #include <stdio.h>

@@ -11,6 +11,7 @@ TEST CASES:
    2. Input: 28, Output: "28 is a perfect number."
    3. Input: 12, Output: "12 is not a perfect number."
 */
+
 #include<stdio.h>
 int perfect(int num);
 int main()

@@ -23,6 +23,16 @@
  
   We use 'unsigned int' for the bit work because shifting and flipping
   signed numbers can behave unexpectedly.
+  TEST CASE:
+  INPUT: 45  binary equivalent-00101101
+  (from the right )pos = 1, n = 2,
+   
+  Enter first integer : 45
+  Enter second integer: 54
+    Enter starting bit position (0 = rightmost bit): 1
+    Enter number of bits to swap (n): 2
+    OUTPUT: 47  binary equivalent-00101111
+            52  binary equivalent-00110100
  */
 
 #include <stdio.h>

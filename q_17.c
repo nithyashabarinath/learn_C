@@ -8,27 +8,35 @@ REQUIREMENT: Toggle n bits, starting from a given position, in an integer. Toggl
   "n bits starting at position pos" means bits pos, pos+1, ... pos+n-1.
   Example: pos = 2, n = 4  ->  bits 5 4 3 2.
  
-  Idea:
+DESIGN:
     The XOR operator (^) flips a bit when the other bit is 1:
            x ^ 1  =  flipped x         x ^ 0  =  x (unchanged)
     So to flip ONE bit at position p, XOR the number with (1 << p).
    We do that for every position pos .. pos+n-1 using a loop:
            num ^= (1u << (pos + i));        <- same as num = num ^ (...)
    All other bits are XORed with 0, so they stay exactly as they were.
- 
  Shortcut (same result, no loop): build a mask with n ones, slide it to pos, and do one XOR:   num ^= ((1u << n) - 1u) << pos;
- 
-  We use 'unsigned int' for the bit work because shifting signed numbers can behave unexpectedly.
+ We use 'unsigned int' for the bit work because shifting signed numbers can behave unexpectedly
+
+Step 1: read the number
+ Step 2: read the start position and the number of bits 
+ Step 3: make sure the chosen bits fit inside a 32-bit number 
+ Step 4: show the number before the toggle 
+ Step 5: flip the bits one at a time, from position pos upwards 
+ Step 6: show the result 
+  TEST CASE:  
+  INPUT:170  binary equivalent-10101010
+  (from the right )pos = 2, n = 4, 
+  output:150  10010110
  */
 
 #include <stdio.h>
 
 #define INT_BITS 32   /* we assume int is 32 bits wide (true on most systems) */
 
-/* ---------- Function prototypes ---------- */
+
 void printBinary(unsigned int num);
 
-/* ---------- main ---------- */
 int main(void)
 {
     int input;                           /* what the user types */
@@ -36,31 +44,17 @@ int main(void)
     int pos, n, i;
 
     printf("=== Toggle n Bits of a Number ===\n\n");
-
-    /* Step 1: read the number */
     printf("Enter an integer: ");
     scanf("%d", &input);
-
-    /* Step 2: read the start position and the number of bits */
     printf("Enter starting bit position (0 = rightmost bit): ");
     scanf("%d", &pos);
     printf("Enter number of bits to toggle (n): ");
     scanf("%d", &n);
-
-    /* Step 3: make sure the chosen bits fit inside a 32-bit number */
-    if (pos < 0 || n < 1 || pos + n > INT_BITS) {
-        printf("Invalid input! Position must be >= 0, n must be >= 1,\n");
-        printf("and position + n must not be more than %d.\n", INT_BITS);
-        return 1;                        /* non-zero means the program ended with an error */
-    }
-
-    num = (unsigned int)input;           /* copy into an unsigned variable */
-
-    /* Step 4: show the number before the toggle */
+    num = (unsigned int)input;          
     printf("\nBefore toggle: %d\n  ", input);
     printBinary(num);
 
-    /* Step 5: flip the bits one at a time, from position pos upwards */
+   
     printf("\n");
     for (i = 0; i < n; i++) {
         num ^= (1u << (pos + i));        /* XOR with a single 1 flips just that bit */
@@ -68,7 +62,7 @@ int main(void)
         printBinary(num);
     }
 
-    /* Step 6: show the result */
+  
     printf("\nAfter toggle: %d\n  ", (int)num);
     printBinary(num);
 
@@ -79,9 +73,11 @@ int main(void)
 void printBinary(unsigned int num)
 {
     int bit;
-    for (bit = INT_BITS - 1; bit >= 0; bit--) {
-        printf("%u", (num >> bit) & 1u);     /* shift bit to the right end, keep it */
-        if (bit % 8 == 0 && bit != 0) {
+    for (bit = INT_BITS - 1; bit >= 0; bit--) 
+    {
+        printf("%u", (num >> bit) & 1u);     
+        if (bit % 8 == 0 && bit != 0) 
+        {
             printf(" ");
         }
     }

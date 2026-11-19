@@ -23,6 +23,29 @@ corresponding n bits of a second number using bitwise operators (& | ~ << >>).
  
  we use 'unsigned int' for the bit work because shifting and flipping
  signed numbers can behave unexpectedly.
+
+ Enter first integer (bits will be replaced) : 35
+Enter second integer (bits are copied from) : 56
+Enter starting bit position (0 = rightmost bit): 2
+Enter number of bits to replace (n): 3
+TEST CASE:  
+  INPUT:35  binary equivalent-00100011
+  (from the right )pos = 2, n = 3, 
+  output:59  binary equivalent-00111011
+First number  = 35
+  00000000 00000000 00000000 00100011
+Second number = 56
+  00000000 00000000 00000000 00111000
+
+  [debug] mask (bits 2 to 4):
+  00000000 00000000 00000000 00011100
+  [debug] first number with those bits cleared:
+  00000000 00000000 00000000 00100011
+  [debug] bits taken from the second number:
+  00000000 00000000 00000000 00011000
+
+Result = 59
+  00000000 00000000 00000000 00111011
  */
 
 #include <stdio.h>

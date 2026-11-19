@@ -50,15 +50,14 @@ int main(void)
     scanf("%d", &pos);
     printf("Enter number of bits to toggle (n): ");
     scanf("%d", &n);
-    num = (unsigned int)input;          
+    num = input;          
     printf("\nBefore toggle: %d\n  ", input);
     printBinary(num);
-
-   
     printf("\n");
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < n; i++)
+     {
         num ^= (1u << (pos + i));        /* XOR with a single 1 flips just that bit */
-        printf("  [debug] toggled bit %d:\n  ", pos + i);
+        printf(" toggled bit %d:\n  ", pos + i);
         printBinary(num);
     }
 
